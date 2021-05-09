@@ -34,7 +34,6 @@ def secante(p_ant,p,func,tolerancia):
         p_ant = p_ant_aux
         f_p_ant = f_p_ant_aux
 
-        f_p_ant = func(p_ant)
         f_p = func(p)
 
         df = df.append({'pn': p, 'f(pn)': f_p}, ignore_index=True)
