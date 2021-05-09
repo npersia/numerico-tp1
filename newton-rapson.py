@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 
@@ -50,4 +51,13 @@ def f(x):
 def f_der(x):
     return 3*(x**2)+(8*(x))
 
-print(n_r(2,f,f_der,1E-4))
+
+def seno(x):
+    return np.sin(x)
+
+def coseno(x):
+    return np.cos(x)
+
+#print(n_r(2,f,f_der,1E-4))
+
+print(n_r(3,seno,coseno,1E-10))
