@@ -1,12 +1,10 @@
 import pandas as pd
 
-def pivote(a,b):
-    return (a+b)/2
 
-#PRE: recibe una func, que debe ser continua en el intervalo de analisis.
-#       Se suponen raices simples
-#
-#POS: retorna TRUE si existe una raiz entre x e y
+
+def pivote(p,func,func_derivada):
+    return (p) - ( (func(p)) / (func_derivada(p)) )
+
 def bolzano(x,y):
     return (x * y) < 0
 
@@ -17,11 +15,9 @@ def paro(x,y,e):
         return (abs(x-y) < e)
 
 
-def biseccion(a,b,func,tolerancia):
-    f_a = func(a)
-    f_b = func(b)
 
-    p = pivote(a, b)
+def n_r(semilla,func,func_derivada,tolerancia):
+    p = pivote(semilla , func, func_derivada)
     f_p = func(p)
 
 
@@ -55,12 +51,3 @@ def biseccion(a,b,func,tolerancia):
         parar = paro(p, p_ant, tolerancia)
 
     return df
-
-
-
-
-def f(x):
-    return (x**3)+(4*(x**2))-(10)
-
-
-print(biseccion(1,2,f,1E-4))
