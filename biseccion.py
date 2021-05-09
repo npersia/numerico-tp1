@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def pivote(a,b):
     return (a+b)/2
@@ -63,4 +64,4 @@ def f(x):
     return (x**3)+(4*(x**2))-(10)
 
 
-print(biseccion(1,2,f,1E-4))
+print(biseccion(np.float64(1),np.float64(2),f,1E-4))
