@@ -1,10 +1,5 @@
 import pandas as pd
 
-
-def f(x):
-    return (x**3)+(4*(x**2))-(10)
-
-
 def pivote(a,b):
     return (a+b)/2
 
@@ -56,7 +51,13 @@ def biseccion(a,b,func,tolerancia):
 
         parar = paro(p, p_ant, tolerancia)
 
-
     return df
+
+
+
+
+def f(x):
+    return (x**3)+(4*(x**2))-(10)
+
 
 print(biseccion(1,2,f,1E-4))
