@@ -60,4 +60,4 @@ def coseno(x):
 
 #print(n_r(2,f,f_der,1E-4))
 
-print(n_r(3,seno,coseno,1E-10))
+print(n_r(2,seno,coseno,1E-10))
