@@ -16,22 +16,22 @@ def prec(p):
 
 def pivote(p,f,f_derivada,pre=64):
     precision = prec(pre)
-    return precision(p) - ( precision(f)/ precision(f_derivada))
+    return precision(precision(p) - precision( precision(f)/ precision(f_derivada)))
 
 def paro(x,y,e,pre=64):
     precision = prec(pre)
     if x != 0 :
-        return ( abs(precision(x)-precision(y))/abs(precision(x)) ) < precision(e)
+        return precision( abs(precision(x)-precision(y))/abs(precision(x)) ) < precision(e)
     else:
-        return (abs(precision(x)-precision(y)) < precision(e))
+        return precision(abs(precision(x)-precision(y)) < precision(e))
 
 
 
 def n_r(p,func,func_derivada,tolerancia,pre=64):
     precision = prec(pre)
 
-    f_p = precision(func(p))
-    f_derivada_p = precision(func_derivada(p))
+    f_p = precision(func(precision(p)))
+    f_derivada_p = precision(func_derivada(precision(p)))
 
 
     df = pd.DataFrame(columns=['pn', 'f(pn)'])
@@ -46,16 +46,16 @@ def n_r(p,func,func_derivada,tolerancia,pre=64):
 
         p_ant = p
 
-        p = precision(pivote(p, f_p, f_derivada_p,pre))
-        f_p = precision(func(p))
-        f_derivada_p = precision(func_derivada(p))
+        p = pivote(p, f_p, f_derivada_p,pre)
+        f_p = precision(func(precision(p)))
+        f_derivada_p = precision(func_derivada(precision(p)))
 
         df = df.append({'pn': p, 'f(pn)': f_p}, ignore_index=True)
 
         if f_p == 0:
             return df
 
-        parar = precision(paro(p, p_ant, tolerancia,pre))
+        parar = paro(p, p_ant, tolerancia,pre)
 
     return df
 
